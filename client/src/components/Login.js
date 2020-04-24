@@ -4,11 +4,9 @@ import axios from "axios";
 
 const LoginForm = (props) => {
   const [name, setName] = useState({
-    username: "username",
-    password: "pAssw0rd!",
+    username: "Lambda School",
+    password: "i<3Lambd4",
   });
-
-  const [loading, setLoading] = useState(false);
 
   const changeHandler = (e) => {
     e.preventDefault();
@@ -21,15 +19,15 @@ const LoginForm = (props) => {
 
   const login = (e) => {
     e.preventDefault();
-    setName({ ...name, isLoading: true });
+
     axios
       .post("http://localhost:5000/api/login", name)
       .then((res) => {
         console.log(res);
         localStorage.setItem("token", res.data.payload);
+        props.history.push("/protected");
       })
       .catch((err) => console.log(err.response));
-    props.history.push("/protect");
   };
 
   return (
@@ -41,7 +39,7 @@ const LoginForm = (props) => {
         tabIndex="0"
       >
         <h1 className="title">Title</h1>
-        <p clasName="login-inputs">
+        <p className="login-inputs">
           <label>
             Username:
             <input
