@@ -1,11 +1,11 @@
-import React, { useState, render } from "react";
+import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
 
 const LoginForm = (props) => {
   const [name, setName] = useState({
-    username: "",
-    password: "",
+    username: "username",
+    password: "pAssw0rd!",
   });
 
   const [loading, setLoading] = useState(false);
